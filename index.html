@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');</style>
+    <script src="https://kit.fontawesome.com/9e46e299e9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/reponsive.css">
+</head>
+<body>
+    <nav>
+        <!-- <img class="logo" src="https://www.alura.com.br/assets/img/alura-logo.svg" alt="alura-logo" draggable="false"> -->
+        <p>alura</p>
+    </nav>
+    <main>
+        <h1>Jogo da Forca</h1>
+        <section class="head">
+            <img id="gallows" src="images/gallows.png" alt="forca">
+            <img id="doll" src="images/doll-6.png" alt="boneco forca">
+        </section>
+        <section id="letters" class="hide">
+        </section>
+        <section id="category" class="hide"></section>
+        <section id="wrongLetters" class="hide">
+        </section>
+        <section id="keyboard" class="hide">
+            <div class="key">
+                <button id="KeyQ" onclick="keyboardPressed(this, 'Q')">Q</button>
+                <button id="KeyW" onclick="keyboardPressed(this, 'W')">W</button>
+                <button id="KeyE" onclick="keyboardPressed(this, 'E')">E</button>
+                <button id="KeyR" onclick="keyboardPressed(this, 'R')">R</button>
+                <button id="KeyT" onclick="keyboardPressed(this, 'T')">T</button>
+                <button id="KeyY" onclick="keyboardPressed(this, 'Y')">Y</button>
+                <button id="KeyU" onclick="keyboardPressed(this, 'U')">U</button>
+                <button id="KeyI" onclick="keyboardPressed(this, 'I')">I</button>
+                <button id="KeyO" onclick="keyboardPressed(this, 'O')">O</button>
+                <button id="KeyP" onclick="keyboardPressed(this, 'P')">P</button>
+            </div>
+            <div class="key">
+                <button id="KeyA" onclick="keyboardPressed(this, 'A')">A</button>
+                <button id="KeyS" onclick="keyboardPressed(this, 'S')">S</button>
+                <button id="KeyD" onclick="keyboardPressed(this, 'D')">D</button>
+                <button id="KeyF" onclick="keyboardPressed(this, 'F')">F</button>
+                <button id="KeyG" onclick="keyboardPressed(this, 'G')">G</button>
+                <button id="KeyH" onclick="keyboardPressed(this, 'H')">H</button>
+                <button id="KeyJ" onclick="keyboardPressed(this, 'J')">J</button>
+                <button id="KeyK" onclick="keyboardPressed(this, 'K')">K</button>
+                <button id="KeyL" onclick="keyboardPressed(this, 'L')">L</button>
+            </div>
+            <div class="key">
+                <button id="KeyZ" onclick="keyboardPressed(this, 'Z')">Z</button>
+                <button id="KeyX" onclick="keyboardPressed(this, 'X')">X</button>
+                <button id="KeyC" onclick="keyboardPressed(this, 'C')">C</button>
+                <button id="KeyV" onclick="keyboardPressed(this, 'V')">V</button>
+                <button id="KeyB" onclick="keyboardPressed(this, 'B')">B</button>
+                <button id="KeyN" onclick="keyboardPressed(this, 'N')">N</button>
+                <button id="KeyM" onclick="keyboardPressed(this, 'M')">M</button>
+            </div>
+        </section>
+        <section id="giveupBtns" class="hide">
+            <button onclick="createNewGame()">Novo jogo</button>
+            <button onclick="giveup()">Desistir</button>
+        </section>
+        <section id="mainBtns" class="">
+            <button id="startBtn">Começar a jogar</button>
+            <button id="wordBtn">Adicionar nova palavra</button>
+        </section>
+    </main>
+    <footer>
+        <p><span>Desenvolvido por</span>
+            <a href="https://victobriel.github.io/" target="_blank"><img src="https://github.com/victobriel.png" draggable="false"></a>
+            <span>-</span>
+            <a href="https://www.alura.com.br/oracle-next-education" target="_blank" draggable="false">Programa ONE</a>
+        </p>
+    </footer>
+    <script type="text/javascript" src="script/script.js"></script>
+</body>
+</html>

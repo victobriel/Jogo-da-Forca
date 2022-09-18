@@ -1,0 +1,52 @@
+@media screen and (max-width: 420px) {
+    body h1 {
+        font-size: 36px;
+    }
+    .head {
+        width: 340px;
+    }
+    #doll {
+        width: 160px;
+        top: 70px;
+        right: 18px;
+    }
+    #gallows {
+        width: 250px;
+    }
+    .key button {
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    body h1 {
+        padding: 5px 0 15px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body h1 {
+        font-size: 30px;
+    }
+    .head { 
+        width: 300px;
+    }
+    #doll {
+        width: 130px;
+        top: 83px;
+        right: 22px;
+    }
+    #gallows {
+        width: 220px;
+    }
+    .key button {
+        width: 21px;
+        height: 21px;
+        font-size: 10px;
+    }
+    #giveupBtns {
+        width: 300px;
+    }
+}
