@@ -1,4 +1,4 @@
-const letters = document.getElementById('letters'), keyboard = document.getElementById('keyboard'), mainBtns = document.getElementById('mainBtns'), imgDoll = document.getElementById('doll'), giveUpBtns = document.getElementById('giveupBtns'), category = document.getElementById('category'), wrongLetter = document.getElementById('wrongLetters');
+const letters = document.getElementById('letters'), keyboard = document.getElementById('keyboard'), mainBtns = document.getElementById('mainBtns'), imgDoll = document.getElementById('doll'), giveUpBtns = document.getElementById('giveupBtns'), category = document.getElementById('category'), wrongLetter = document.getElementById('wrongLetters'), head = document.getElementById('head'), newWord = document.getElementById('newWord'), newWordTxtArea = document.getElementById('newWordTxtArea'), warning = document.getElementById('warning');
 
 let wordDrawn,
     wordDrawnList = [],
@@ -6,9 +6,10 @@ let wordDrawn,
     correctLetters = [],
     totalCorrectLetters,
     attempts = 6,
-    gameStarted = false;
+    gameStarted = false,
+    textState;
 
-const dictionary = [
+let dictionary = [
     { name: 'JAVA', category: 'LINGUAGEM DE PROGRAMAÇÃO' },
     { name: 'PYTHON', category: 'LINGUAGEM DE PROGRAMAÇÃO' },
     { name: 'JAVASCRIPT', category: 'LINGUAGEM DE PROGRAMAÇÃO' },
@@ -41,7 +42,7 @@ const dictionary = [
     { name: 'IORGUTE', category: 'COMIDA'},
     { name: 'PRODIGIO', category: 'ADJETIVO'},
     { name: 'PARQUE', category: 'LUGAR'},
-    { name: 'ESPINAFRE', category: 'COMIDA'},
+    { name: 'ESPINAFRE', category: 'VEGETAL'},
     { name: 'CACTO', category: 'PLANTA'},
     { name: 'CAATINGA', category: 'REGIÃO'},
     { name: 'BASQUETE', category: 'ESPORTE'},
@@ -124,7 +125,10 @@ function createNewGame() {
     letters.classList.remove('hide');
     keyboard.classList.remove('hide');
     wrongLetter.innerHTML = '<p>Letras erradas: </p>';
-    wrongLetter.classList.add('hide')
+    wrongLetter.classList.add('hide');
+    newWord.classList.add('hide');
+    head.classList.remove('hide');
+    warning.classList.add('hide');
     wrongLetters = [];
     correctLetters = [];
     totalCorrectLetters = 0;
@@ -153,12 +157,62 @@ function giveup() {
     giveUpBtns.classList.add('hide');
     category.classList.add('hide');
     wrongLetter.classList.add('hide');
+    newWord.classList.add('hide');
+    head.classList.remove('hide');
+};
+
+function removeAccent(text) {
+    const matrizCodigo = [
+        ['[ÁÀÂÃ]', 'A'],
+        ['[ÉÈÊ]', 'E'],
+        ['[ÍÌÎ]', 'I'],
+        ['[ÓÒÔÕ]', 'O'],
+        ['[ÚÙÛ]', 'U'],
+        ['Ç', 'C']
+    ];
+    for(i=0; i < matrizCodigo.length; i++) {
+        text = text.replace(new RegExp(matrizCodigo[i][0], 'gi'), matrizCodigo[i][1]);
+    }
+    return text;
 }
+
+function nextButtonPressed(element) {
+    let regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s[a-zA-Zá-úÁ-Ú]+$/g;
+    if (newWordTxtArea.length < 1 || !regexObj.test(newWordTxtArea.value)){
+        warning.classList.remove('hide');
+        warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Utilize "nome, categoria"';
+    } else {
+        let result = newWordTxtArea.value.match(regexObj)[0].toUpperCase().split(", ");
+        console.log(result);
+        if (result[0].length > 12) {
+            warning.classList.remove('hide');
+            warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Não utilize mais que 12 caracteres no nome';
+        } else if (result[1].length > 15) {
+            warning.classList.remove('hide');
+            warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Não utilize mais que 15 caracteres na categoria';
+        } else {
+            dictionary.push({name: removeAccent(result[0]), category: result[1]});
+            createNewGame();
+        }
+    }
+}
+
+function backButtonPressed(){ return giveup(); }
+
+setInterval(() => {
+    if(textState)
+        newWordTxtArea.placeholder = 'Digite a palavra aqui';
+    else
+        newWordTxtArea.placeholder = 'Digite a palavra aqui_';
+    textState = !textState;
+}, 400);
 
 document.getElementById('startBtn').addEventListener('click', createNewGame);
 
 document.getElementById('wordBtn').addEventListener('click', () => {
-    mainBtns.style.visibility = 'hidden';
+    mainBtns.classList.add('hide');
+    head.classList.add('hide');
+    newWord.classList.remove('hide');
 });
 
 window.addEventListener('keypress', (event) => {

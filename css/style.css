@@ -7,7 +7,6 @@ body h1 {
     padding: 40px 0 20px;
     color: #565656;
     letter-spacing: -3px;
-    text-align: center;
 }
 
 body::after {
@@ -22,11 +21,10 @@ body::after {
     bottom: 0;
     z-index: -1;
     width: 100%;
-    height: 100%;
 }
 
 body nav p {
-    padding: 20px 40px;
+    padding: 20px 40px 0;
     font-family: 'Silkscreen', cursive;
     font-size: 30px;
     letter-spacing: -4px;
@@ -34,8 +32,6 @@ body nav p {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
@@ -45,13 +41,28 @@ main {
     display: none !important;
 }
 
-.head {
+.flex {
     display: flex;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#head {
     justify-content: center;
-    align-items: center;
     width: 383px;
     height: 300px;
     position: relative;
+}
+
+#gallows {
+    width: 300px;
+    position: absolute;
 }
 
 #doll {
@@ -61,13 +72,7 @@ main {
     right: 0px;
 }
 
-#gallows {
-    width: 300px;
-    position: absolute;
-}
-
 #letters {
-    display: flex;
     flex-wrap: wrap;
     text-align: center;
     justify-content: center;
@@ -86,26 +91,23 @@ main {
     padding: 10px 30px;
     border: dashed 2px rgba(0, 0, 0, .1);
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 0;
     text-align: center;
     border-top: none;
     position: relative;
-    width: auto;
 }
 
 #category span {
-    font-size: 12px;
+    font-size: 13px;
     position: absolute;
     top: -5px;
     left: 10px;
-    font-style: none;
     color: goldenrod;
 }
 
 #wrongLetters {
     font-size: 14px;
     padding: 7px 0;
-    display: flex;
     color: red;
     align-items: center;
 }
@@ -123,7 +125,6 @@ main {
 }
 
 .key {
-    display: flex;
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
@@ -141,56 +142,41 @@ main {
 }
 
 .key button:hover {
-    cursor: pointer;
-    box-shadow: none;
-    border: none;
-    color: white;
-    background-color: rgba(0, 0, 0, .3);
     transform: scale(1.1);
+    background-color: #67727D;
+    color: white;
 }
 
 #giveupBtns {
     padding-top: 20px;
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
 }
 
 #giveupBtns button {
-    text-align: center;
     width: 318px;
     height: 67px;
-    border: dashed 1px #ccc;
+    border: solid 1px #ccc;
     border-radius: 10px;
     font-size: 13px;
     background-color: #F5F5F5;
 }
 
-#giveupBtns button:hover {
-    cursor: pointer;
-    font-size: 14px;
-}
-
 #mainBtns {
-    display: flex;
-    flex-direction: column;
+    padding-top: 50px;
     flex-wrap: wrap;
     gap: 8px;
 }
 
 #mainBtns button {
-    border-radius: 24px;
     width: 318px;
     height: 105px;
     background-color: transparent;
-    border: solid 2px #565656;
-    font-size: 14px;
+    border: solid 1px #565656;
+    border-radius: 24px;
+    font-size: 16px;
     color: #565656;
-}
-
-#mainBtns button:hover {
-    cursor: pointer;
 }
 
 #startBtn {
@@ -202,18 +188,55 @@ main {
     pointer-events: none;
 }
 
+#newWord {
+    align-items: center;
+    /* justify-content: center; */
+    gap: 10px;
+}
+
+#newWord i {
+    font-size: 22px;
+    color: red;
+}
+
+#newWordTxtArea {
+    padding-top: 50px;
+    resize: none;
+    width: 500px;
+    height: 500px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    outline: none;
+}
+
+.warnings {
+    gap: 10px;
+}
+
+.newWordBtns {
+    flex-wrap: wrap;
+    margin: 20px 0 0;
+    justify-content: center;
+    gap: 8px;
+}
+
+.newWordBtns button {
+    width: 318px;
+    height: 67px;
+    border: solid 1px #565656;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
 footer {
     padding: 30px 0;
-    display: flex;
     font-family: 'Silkscreen', cursive;
     font-size: 10px;
-    display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 footer p {
-    display: flex;
     align-items: center;
 }
 
@@ -223,10 +246,7 @@ footer a {
 }
 
 footer img {
-    display: inline-block;
-    flex-direction: column;
     width: 30px;
-    height: 30px;
     border-radius: 50px;
     margin: 0 3px;
 }

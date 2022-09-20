@@ -1,45 +1,50 @@
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
+    #newWordTxtArea {
+        width: 420px;
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 375px) {
     body h1 {
         font-size: 36px;
+        padding: 40px 0;
     }
-    .head {
+    #head {
         width: 340px;
-    }
-    #doll {
-        width: 160px;
-        top: 70px;
-        right: 18px;
+        height: 260px;
     }
     #gallows {
         width: 250px;
+    }
+    #doll {
+        width: 160px;
+        top: 44px;
+        right: 18px;
     }
     .key button {
         width: 25px;
         height: 25px;
         font-size: 15px;
     }
-}
-
-@media screen and (max-width: 360px) {
-    body h1 {
-        padding: 5px 0 15px;
+    #newWordTxtArea {
+        width: 370px;
+        height: 370px;
     }
 }
 
 @media screen and (max-width: 320px) {
-    body h1 {
-        font-size: 30px;
-    }
-    .head { 
+    #head { 
         width: 300px;
-    }
-    #doll {
-        width: 130px;
-        top: 83px;
-        right: 22px;
+        height: 220px;
     }
     #gallows {
         width: 220px;
+    }
+    #doll {
+        width: 130px;
+        top: 41px;
+        right: 22px;
     }
     .key button {
         width: 21px;
@@ -48,5 +53,9 @@
     }
     #giveupBtns {
         width: 300px;
+    }
+    #newWordTxtArea {
+        width: 315px;
+        height: 315px;
     }
 }
