@@ -177,7 +177,7 @@ function removeAccent(text) {
 }
 
 function nextButtonPressed(element) {
-    let regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s[a-zA-Zá-úÁ-Ú]+$/g;
+    let regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s[a-zA-Zá-úÁ-Ú\s]+/g;
     if (newWordTxtArea.length < 1 || !regexObj.test(newWordTxtArea.value)){
         warning.classList.remove('hide');
         warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Utilize "nome, categoria"';
