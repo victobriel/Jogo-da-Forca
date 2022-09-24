@@ -177,12 +177,28 @@ function removeAccent(text) {
 }
 
 function nextButtonPressed(element) {
-    let regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s[a-zA-Zá-úÁ-Ú\s]+/g;
-    if (newWordTxtArea.length < 1 || !regexObj.test(newWordTxtArea.value)){
+    // Regex para identificar padrão
+    let regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s{1}[a-zA-Zá-úÁ-Ú]+/g;
+    if (newWordTxtArea.length < 1 || !regexObj.test(newWordTxtArea.value)) {
         warning.classList.remove('hide');
         warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Utilize "nome, categoria"';
     } else {
+        // Regex para identificar padrão com espaço no final
+        regexObj = /^[a-zA-Zá-úÁ-Ú]+,\s{1}[a-zA-Zá-úÁ-Ú\s]+$/g;
+        if (!regexObj.test(newWordTxtArea.value)) {
+            warning.classList.remove('hide');
+            warning.innerHTML = '<i class="fa-solid fa-circle-info"></i> Não utilize caracteres especiais';
+            return;
+        }
         let result = newWordTxtArea.value.match(regexObj)[0].toUpperCase().split(", ");
+        // Regex para encontrar no minimo dois espaços em toda a categoria e substituir por apenas um espaço
+        let result1 = result[1].replace(/[\s]{2,}/g, ' ');
+        // Regex para identificar espaços no final da palavra da categoria
+        regexObj = /[\s]+$/;
+        // Remover espaços do final da palavra da categoria, se tiver
+        if (regexObj.test(result[1]))
+            result1 = result1.replace(regexObj, '');
+        result[1] = result1;
         console.log(result);
         if (result[0].length > 12) {
             warning.classList.remove('hide');
