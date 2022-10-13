@@ -9,7 +9,18 @@ body h1 {
     letter-spacing: -3px;
 }
 
-body::after {
+.bg {
+    background: url(../images/floor.jpg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    opacity: .2;
+}
+
+/* body::after {
     content: '';
     background: url('../images/floor.jpg');
     background-attachment: fixed;
@@ -21,7 +32,7 @@ body::after {
     bottom: 0;
     z-index: -1;
     width: 100%;
-}
+} */
 
 body nav p {
     padding: 20px 40px 0;
